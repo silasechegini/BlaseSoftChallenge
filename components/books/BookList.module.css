@@ -1,0 +1,12 @@
+.books h1 {
+    text-align: center;
+    color: maroon;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 0;
+}

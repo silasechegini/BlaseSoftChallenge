@@ -1,0 +1,8 @@
+# Private Node Modules
+node_modules/
+
+# next configs
+.next/*
+
+# json files
+package-lock.json

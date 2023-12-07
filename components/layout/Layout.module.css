@@ -1,0 +1,18 @@
+.background {
+    width: 100vw;
+    height: 100vw;
+    background-image: linear-gradient(
+        225deg,
+        rgba(255, 140, 107, 1) 0%,
+        rgba(255, 228, 168, 1) 100%
+    );
+    position: fixed;
+    z-index: 0;
+}
+.main {
+    padding-top: 100px;
+    margin: 3rem auto;
+    width: 90%;
+    position: relative;
+    z-index: 5;
+}
