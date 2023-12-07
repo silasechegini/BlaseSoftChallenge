@@ -1,12 +1,6 @@
 import BookList from "../../components/books/BookList";
 import { useSelector } from "react-redux";
-import { BookData } from "@/types";
-
-type State = {
-    bookCatalogue: {
-        books: BookData[];
-    };
-};
+import { State } from "@/types";
 
 const BooksPage = () => {
     const { books } = useSelector((state: State) => state.bookCatalogue);

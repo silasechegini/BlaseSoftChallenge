@@ -4,7 +4,7 @@ import { BookData } from "@/types";
 const { v4: generateId } = require("uuid");
 
 type BookState = { books: BookData[] };
-const initialState = { ...bookCatalogue };
+const initialState: BookState = { ...bookCatalogue };
 
 const updateBooks = createSlice({
     name: "updateItem",
