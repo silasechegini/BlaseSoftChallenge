@@ -12,7 +12,7 @@ type PropType = {
     buttonText: string;
 };
 
-function BookForm({ onAddBook, buttonText }: PropType) {
+function BookForm({ onAddBook, buttonText }: PropType): React.ReactElement {
     const titleInputRef = useRef<any>();
     const imageInputRef = useRef<any>();
     const priceInputRef = useRef<any>();
@@ -35,12 +35,6 @@ function BookForm({ onAddBook, buttonText }: PropType) {
         };
 
         onAddBook(bookData);
-
-        titleInputRef.current.value = "";
-        imageInputRef.current.value = "";
-        priceInputRef.current.value = "";
-        categoryInputRef.current.value = "";
-        descriptionInputRef.current.value = "";
     }
 
     return (

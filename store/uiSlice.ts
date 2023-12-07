@@ -1,13 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-type uiState = {
-    notification: {
-        status: string;
-        title: string;
-        message: string;
-    };
-};
-const initialState: uiState = {
-    notification: { status: "", title: "", message: "" },
+import type { UIState } from "@/types";
+
+const initialState: UIState = {
+    notification: { status: "", title: "", message: "", show: false },
 };
 const uiSlice = createSlice({
     name: "ui",
@@ -15,8 +10,7 @@ const uiSlice = createSlice({
     reducers: {
         notification(state, action) {
             if (action.payload) {
-                const { status, title, message } = action.payload;
-                state.notification = { status, title, message };
+                Object.assign(state.notification, action.payload);
             } else {
                 state.notification = initialState.notification;
             }

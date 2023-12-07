@@ -11,15 +11,16 @@ export type BookState = {
     books: BookData[];
 };
 
-export type UiState = {
+export type UIState = {
     notification: {
         status: string;
         title: string;
         message: string;
+        show?: boolean;
     };
 };
 
 export type State = {
     bookCatalogue: BookState;
-    ui: UiState;
+    ui: UIState;
 };

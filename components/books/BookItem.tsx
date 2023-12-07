@@ -11,7 +11,7 @@ type Props = {
     book: BookData;
 };
 
-function BookItem({ book }: Props) {
+function BookItem({ book }: Props): React.ReactElement {
     const dispatch = useDispatch();
     const deleteHandler = (event: any) => {
         event.preventDefault();
