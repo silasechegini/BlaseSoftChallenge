@@ -22,16 +22,9 @@ const updateBooks = createSlice({
             });
         },
         modifyBook(state, action) {
-            const { id, title, url, price, description, category } =
-                action.payload;
+            const { id } = action.payload;
             const book = state.books.filter((item) => item.id === id);
-            console.log(`book to upsert: ${JSON.stringify(book)}`);
-            book[0].category = category;
-            book[0].description = description;
-            book[0].id = id;
-            book[0].price = price;
-            book[0].url = url;
-            book[0].title = title;
+            Object.assign(book[0], action.payload);
         },
     },
 });

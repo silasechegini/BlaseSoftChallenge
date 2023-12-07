@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import Card from "../ui/Card";
 import { useDispatch } from "react-redux";
 import { bookActions } from "../../store/bookSlice";
@@ -12,7 +11,7 @@ type Props = {
     book: BookData;
 };
 
-function EventItem({ book }: Props) {
+function BookItem({ book }: Props) {
     const dispatch = useDispatch();
     const deleteHandler = (event: any) => {
         event.preventDefault();
@@ -24,7 +23,7 @@ function EventItem({ book }: Props) {
             <Card>
                 <div className={classes.image}>
                     <Link href={{ pathname: "/editBook", query: { ...book } }}>
-                        <img src={book.url} alt={book.title} />
+                        <img src={book.url.toString()} alt={book.title} />
                     </Link>
                 </div>
                 <div className={classes.content}>
@@ -43,4 +42,4 @@ function EventItem({ book }: Props) {
     );
 }
 
-export default EventItem;
+export default BookItem;

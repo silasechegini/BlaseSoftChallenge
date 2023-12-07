@@ -22,8 +22,6 @@ function BookForm({ onAddBook, buttonText }: PropType) {
     const { query } = useRouter();
     const id: string = typeof query.id === "string" ? query.id : "";
 
-    console.log(`bood to edit: ${JSON.stringify(query)}`);
-
     function submitHandler(event: any) {
         event.preventDefault();
 
