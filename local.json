@@ -1,0 +1,14 @@
+{
+    "editNotification": {
+        "title": "Confirm Edit",
+        "message": "sure you want to edit this book information ?"
+    },
+    "addNotification": {
+        "title": "Confirm Add Book",
+        "message": "sure you want to add this book ?"
+    },
+    "defaultNotification": {
+        "title": "",
+        "message": ""
+    }
+}

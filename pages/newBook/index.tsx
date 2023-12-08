@@ -5,19 +5,20 @@ import { bookActions } from "../../store/bookSlice";
 import { uiActions } from "../../store/uiSlice";
 import BookForm from "../../components/books/BookForm";
 import PopupTemplate from "../../components/PopupTemplate/PopupTemplate";
+import NOTIFICATIONS from "../../local.json";
 import { BookData } from "@/types";
 
 const NewBookPage = () => {
     const [bookData, setBookData] = useState<BookData>();
     const dispatch = useDispatch();
     const router = useRouter();
+    const { defaultNotification, addNotification } = NOTIFICATIONS;
 
     const addBookHandler = (newBookData: BookData) => {
         setBookData(newBookData);
         dispatch(
             uiActions.notification({
-                title: "Confirm Add Book",
-                message: "sure you want to add this book ?",
+                ...addNotification,
                 show: true,
             }),
         );
@@ -25,8 +26,7 @@ const NewBookPage = () => {
     const resetNotification = () => {
         dispatch(
             uiActions.notification({
-                title: "",
-                message: "",
+                ...defaultNotification,
                 show: false,
             }),
         );

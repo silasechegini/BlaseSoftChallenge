@@ -5,6 +5,7 @@ import { uiActions } from "../../store/uiSlice";
 import { useRouter } from "next/router";
 import BookForm from "../../components/books/BookForm";
 import PopupTemplate from "../../components/PopupTemplate/PopupTemplate";
+import NOTIFICATIONS from "../../local.json";
 
 //type imports
 import { BookData } from "@/types";
@@ -13,12 +14,12 @@ const EditBookPage = () => {
     const [bookData, setBookData] = useState<BookData>();
     const dispatch = useDispatch();
     const router = useRouter();
+    const { defaultNotification, editNotification } = NOTIFICATIONS;
     const editBookHandler = (newBookData: BookData) => {
         setBookData(newBookData);
         dispatch(
             uiActions.notification({
-                title: "Confirm Edit",
-                message: "sure you want to edit this book information ?",
+                ...editNotification,
                 show: true,
             }),
         );
@@ -26,8 +27,7 @@ const EditBookPage = () => {
     const resetNotification = () => {
         dispatch(
             uiActions.notification({
-                title: "",
-                message: "",
+                ...defaultNotification,
                 show: false,
             }),
         );

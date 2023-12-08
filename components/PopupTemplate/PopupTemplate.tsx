@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import Card from "../ui/Card";
+import Button from "../ui/Button";
 import { useSelector } from "react-redux";
 import classes from "./PopupTemplate.module.css";
 
@@ -27,18 +28,24 @@ const PopupTemplate = ({
                     <Card>
                         <main className={classes.modal}>
                             <div className={classes.heading}>
-                                <h3>{notification.title ?? "Title"}</h3>
+                                <h3>{notification.title}</h3>
                             </div>
                             <div className={classes.content}>
-                                <p>{notification.message ?? "Message"}</p>
+                                <p>{notification.message}</p>
                             </div>
-                            <div className={classes.footer}>
+                            <div className={classes.actions}>
                                 {buttonText ? (
-                                    <button>{buttonText}</button>
+                                    <Button buttonText={buttonText} />
                                 ) : (
                                     <>
-                                        <button onClick={onAffirm}>Yes</button>
-                                        <button onClick={onReject}>No</button>
+                                        <Button
+                                            onClick={onAffirm}
+                                            buttonText='Yes'
+                                        />
+                                        <Button
+                                            onClick={onReject}
+                                            buttonText='No'
+                                        />
                                     </>
                                 )}
                             </div>
