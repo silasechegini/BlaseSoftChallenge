@@ -8,7 +8,7 @@ type Props = {
     books: BookData[];
 };
 
-function BooksList({ books }: Props) {
+function BooksList({ books }: Props): React.ReactElement {
     const renderHeading =
         books.length > 0 ? (
             <h1>Great reads these days</h1>

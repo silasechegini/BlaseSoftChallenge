@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import bookCatalogue from "./books.json";
-import { BookData } from "@/types";
+import { BookState } from "@/types";
 const { v4: generateId } = require("uuid");
 
-type BookState = { books: BookData[] };
-const initialState = { ...bookCatalogue };
+const initialState: BookState = { ...bookCatalogue };
 
 const updateBooks = createSlice({
-    name: "updateItem",
+    name: "updateBooks",
     initialState: initialState,
     reducers: {
         removeBook(state: BookState, action) {

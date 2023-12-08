@@ -6,3 +6,21 @@ export type BookData = {
     description: string;
     category: string;
 };
+
+export type BookState = {
+    books: BookData[];
+};
+
+export type UIState = {
+    notification: {
+        status: string;
+        title: string;
+        message: string;
+        show?: boolean;
+    };
+};
+
+export type State = {
+    bookCatalogue: BookState;
+    ui: UIState;
+};

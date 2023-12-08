@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Card from "../ui/Card";
+import Button from "../ui/Button";
 import { useDispatch } from "react-redux";
 import { bookActions } from "../../store/bookSlice";
 import classes from "./BookItem.module.css";
@@ -11,7 +12,7 @@ type Props = {
     book: BookData;
 };
 
-function BookItem({ book }: Props) {
+function BookItem({ book }: Props): React.ReactElement {
     const dispatch = useDispatch();
     const deleteHandler = (event: any) => {
         event.preventDefault();
@@ -35,7 +36,7 @@ function BookItem({ book }: Props) {
                     <i>{book.price}</i>
                 </div>
                 <div className={classes.actions}>
-                    <button onClick={deleteHandler}>Delete</button>
+                    <Button onClick={deleteHandler} buttonText='Delete' />
                 </div>
             </Card>
         </div>

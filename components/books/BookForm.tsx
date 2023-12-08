@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import type { BookData } from "../../types";
 
 import Card from "../ui/Card";
+import Button from "../ui/Button";
 import classes from "./BookForm.module.css";
 
 type PropType = {
@@ -12,7 +13,7 @@ type PropType = {
     buttonText: string;
 };
 
-function BookForm({ onAddBook, buttonText }: PropType) {
+function BookForm({ onAddBook, buttonText }: PropType): React.ReactElement {
     const titleInputRef = useRef<any>();
     const imageInputRef = useRef<any>();
     const priceInputRef = useRef<any>();
@@ -35,12 +36,6 @@ function BookForm({ onAddBook, buttonText }: PropType) {
         };
 
         onAddBook(bookData);
-
-        titleInputRef.current.value = "";
-        imageInputRef.current.value = "";
-        priceInputRef.current.value = "";
-        categoryInputRef.current.value = "";
-        descriptionInputRef.current.value = "";
     }
 
     return (
@@ -97,7 +92,7 @@ function BookForm({ onAddBook, buttonText }: PropType) {
                             ref={descriptionInputRef}></textarea>
                     </div>
                     <div className={classes.actions}>
-                        <button>{buttonText}</button>
+                        <Button buttonText={buttonText} />
                     </div>
                 </form>
             </Card>
