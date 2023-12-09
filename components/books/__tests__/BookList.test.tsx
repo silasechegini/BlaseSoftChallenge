@@ -1,8 +1,8 @@
 import BookList from "../BookList";
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import bookCatalogue from "./testUtils/books.json";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const { books } = bookCatalogue;
 const mockDispatch = jest.fn();
