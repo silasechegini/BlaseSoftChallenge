@@ -15,8 +15,6 @@ jest.mock("react-redux", () => ({
 }));
 
 describe("Popuptemplate", () => {
-    let component: any;
-
     const mockAffirm = jest.fn(() => mockDispatch());
     const mockReject = jest.fn();
 
@@ -25,12 +23,12 @@ describe("Popuptemplate", () => {
         onReject: mockReject,
     };
 
-    beforeEach(() => {
-        component = render(<PopupTemplate {...defaultProps} />);
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     it("should render the component correctly", () => {
-        const { container } = component;
+        const { container } = render(<PopupTemplate {...defaultProps} />);
 
         expect(container).toBeInTheDocument();
         expect(screen.getByText("Test title")).toBeInTheDocument();
@@ -38,6 +36,7 @@ describe("Popuptemplate", () => {
         expect(screen.getByText("Test title")).toBeInTheDocument();
     });
     it("should execute clicks on both buttons", () => {
+        render(<PopupTemplate {...defaultProps} />);
         const buttons = screen.getAllByRole("button");
         expect(buttons.length).toBe(2);
 
@@ -49,5 +48,14 @@ describe("Popuptemplate", () => {
 
         reject.click();
         expect(mockReject).toHaveBeenCalledTimes(1);
+    });
+    it("should have one button and execute click on it", () => {
+        render(<PopupTemplate {...defaultProps} buttonText='OK' />);
+
+        const button = screen.getAllByRole("button");
+        expect(button.length).toBe(1);
+        expect(screen.getByText("OK")).toBeInTheDocument();
+        button[0].click();
+        expect(mockAffirm).toHaveBeenCalledTimes(1);
     });
 });
