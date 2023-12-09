@@ -9,9 +9,8 @@ import type { State } from "@/types";
 
 type Props = {
     buttonText?: string;
-    showModal?: boolean;
     onAffirm: () => void;
-    onReject: () => void;
+    onReject?: () => void;
 };
 
 const PopupTemplate = ({
@@ -35,7 +34,10 @@ const PopupTemplate = ({
                             </div>
                             <div className={classes.actions}>
                                 {buttonText ? (
-                                    <Button buttonText={buttonText} />
+                                    <Button
+                                        onClick={onAffirm}
+                                        buttonText={buttonText}
+                                    />
                                 ) : (
                                     <>
                                         <Button
