@@ -10,5 +10,9 @@
     "defaultNotification": {
         "title": "",
         "message": ""
+    },
+    "bookList": {
+        "titleWithBooks": "Great reads these days",
+        "titleWithoutBooks": "There are no books here"
     }
 }

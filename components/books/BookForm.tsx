@@ -21,6 +21,7 @@ function BookForm({ onAddBook, buttonText }: PropType): React.ReactElement {
     const descriptionInputRef = useRef<any>();
 
     const { query } = useRouter();
+
     const id: string = typeof query.id === "string" ? query.id : "";
 
     function submitHandler(event: any) {
@@ -47,7 +48,7 @@ function BookForm({ onAddBook, buttonText }: PropType): React.ReactElement {
                         <input
                             type='text'
                             required
-                            id='title'
+                            data-testid='title'
                             defaultValue={query ? query.title : ""}
                             ref={titleInputRef}
                         />
@@ -57,7 +58,7 @@ function BookForm({ onAddBook, buttonText }: PropType): React.ReactElement {
                         <input
                             type='url'
                             required
-                            id='image'
+                            data-testid='image'
                             defaultValue={query ? query.url : ""}
                             ref={imageInputRef}
                         />
@@ -67,7 +68,7 @@ function BookForm({ onAddBook, buttonText }: PropType): React.ReactElement {
                         <input
                             type='text'
                             required
-                            id='price'
+                            data-testid='price'
                             defaultValue={query ? query.price : ""}
                             ref={priceInputRef}
                         />
@@ -77,7 +78,7 @@ function BookForm({ onAddBook, buttonText }: PropType): React.ReactElement {
                         <input
                             type='text'
                             required
-                            id='category'
+                            data-testid='category'
                             defaultValue={query ? query.category : ""}
                             ref={categoryInputRef}
                         />
@@ -85,7 +86,7 @@ function BookForm({ onAddBook, buttonText }: PropType): React.ReactElement {
                     <div className={classes.control}>
                         <label htmlFor='description'>Description</label>
                         <textarea
-                            id='description'
+                            data-testid='description'
                             required
                             rows={5}
                             defaultValue={query ? query.description : ""}

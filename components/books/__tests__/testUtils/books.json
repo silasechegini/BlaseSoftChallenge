@@ -1,0 +1,44 @@
+{
+    "books": [
+        {
+            "id": "574dd20a-939b-11ee-b9d1-0242ac120002",
+            "title": "The Road to React",
+            "url": "https://m.media-amazon.com/images/I/51z-3GpdJyL._AC_UF1000,1000_QL80_.jpg",
+            "price": "$57.99",
+            "category": "Technology",
+            "description": "The road to react - a technical guide"
+        },
+        {
+            "id": "574dd5f2-939b-11ee-b9d1-0242ac120002",
+            "title": "The Art Of Saying NO",
+            "url": "https://cdn.kobo.com/book-images/082c0db7-24d0-4ee8-903a-67b16b7a35f5/353/569/90/False/the-art-of-saying-no-1.jpg",
+            "price": "$7.99",
+            "category": "Self-help",
+            "description": "The art of saying no"
+        },
+        {
+            "id": "574dd78c-939b-11ee-b9d1-0242ac120002",
+            "title": "The Magic of Thinking Big",
+            "url": "https://m.media-amazon.com/images/I/81UZJqFG7VL._SY466_.jpg",
+            "price": "$7.99",
+            "category": "Self-help",
+            "description": "The magic of thinking big"
+        },
+        {
+            "id": "574dd8ea-939b-11ee-b9d1-0242ac120002",
+            "title": "Gifted Hands: The Ben Carson Story",
+            "url": "https://m.media-amazon.com/images/M/MV5BMzBiNThmMGQtODc3Ny00YjUxLWE4MWMtOTA1YTI4ZmY2NDM2XkEyXkFqcGdeQXVyNjYxNDMyMTE@._V1_.jpg",
+            "price": "$12.99",
+            "category": "Nonfiction, autobiography",
+            "description": "a story of a doctor who has gifter hands"
+        },
+        {
+            "id": "574dda5c-939b-11ee-b9d1-0242ac120002",
+            "title": "Battlefield of the Mind",
+            "url": "https://m.media-amazon.com/images/I/81QZ13dECRL._AC_UF1000,1000_QL80_.jpg",
+            "price": "$22:99",
+            "category": "Christian literature",
+            "description": "The mind is a battle field explained"
+        }
+    ]
+}
