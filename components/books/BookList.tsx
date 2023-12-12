@@ -1,6 +1,6 @@
 import BookItem from "./BookItem";
 import classes from "./BookList.module.css";
-import { bookList } from "../../local.json";
+import local from "../../local.json";
 
 // type imports
 import type { BookData } from "../../types";
@@ -10,6 +10,7 @@ type Props = {
 };
 
 function BooksList({ books }: Props): React.ReactElement {
+    const { bookList } = local;
     const renderHeading =
         books.length > 0 ? (
             <h1>{bookList.titleWithBooks}</h1>

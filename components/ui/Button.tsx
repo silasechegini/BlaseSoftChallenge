@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, ReactElement } from "react";
 import classes from "./Button.module.css";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
     onClick?: (event?: any) => void;
 };
 
-const Button = ({ buttonText, onClick, styles }: Props) => {
+const Button = ({ buttonText, onClick, styles }: Props): ReactElement => {
     const computedStyles = useMemo(
         () =>
             styles ? `${styles} ${classes.buttonStyles}` : classes.buttonStyles,

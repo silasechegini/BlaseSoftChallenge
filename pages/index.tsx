@@ -1,6 +1,6 @@
 import BooksPage from "./books/index";
 
-const HomePage = () => {
+const HomePage = (): React.ReactNode => {
     return <BooksPage />;
 };
 

@@ -5,7 +5,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-const PageContent = ({ title, children }: Props) => {
+const PageContent = ({ title, children }: Props): React.ReactElement => {
     return (
         <div className={classes.content}>
             <h1>{title}</h1>

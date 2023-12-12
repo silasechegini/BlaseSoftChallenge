@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment, ReactElement } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { bookActions } from "../../store/bookSlice";
@@ -8,7 +8,7 @@ import PopupTemplate from "../../components/PopupTemplate/PopupTemplate";
 import NOTIFICATIONS from "../../local.json";
 import { BookData } from "@/types";
 
-const NewBookPage = () => {
+const NewBookPage = (): ReactElement => {
     const [bookData, setBookData] = useState<BookData>();
     const dispatch = useDispatch();
     const router = useRouter();
@@ -40,10 +40,10 @@ const NewBookPage = () => {
         resetNotification();
     };
     return (
-        <>
+        <Fragment>
             <PopupTemplate onAffirm={affirmHandler} onReject={rejectHandler} />
             <BookForm onAddBook={addBookHandler} buttonText='Add Book' />
-        </>
+        </Fragment>
     );
 };
 

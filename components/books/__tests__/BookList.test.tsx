@@ -1,52 +1,89 @@
-import BookList from "../BookList";
+import { ReactElement, ReactNode } from "react";
+import {
+    fireEvent,
+    render,
+    screen,
+    waitFor,
+    act,
+} from "@testing-library/react";
+import { useSelector, Provider } from "react-redux";
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
-import bookCatalogue from "./testUtils/books.json";
-import { useSelector } from "react-redux";
+import BookList from "../BookList";
+import store from "../../../store";
 
-const { books } = bookCatalogue;
-const mockDispatch = jest.fn();
-jest.mock("react-redux", () => ({
-    useSelector: jest.fn(() => books),
-    useDispatch: () => mockDispatch,
-}));
+const INITIAL_BUTTON_LENGTH: 5 = 5;
 
 describe("BookList", () => {
     let component: any;
+    type Props = {
+        TestComponent: () => ReactElement;
+    };
 
     beforeEach(() => {
-        const RenderComponent = () => {
-            const books = useSelector((state: any) => state);
+        const Component = ({ TestComponent }: Props): ReactNode => {
+            return (
+                <Provider store={store}>
+                    <TestComponent />
+                </Provider>
+            );
+        };
+        const RenderComponent = (): ReactElement => {
+            const { books } = useSelector((state: any) => state.bookCatalogue);
 
             return <BookList books={books} />;
         };
-        component = render(<RenderComponent />);
+        component = render(<Component TestComponent={RenderComponent} />);
     });
 
     it("should render the BookList component correctly", () => {
-        const { container } = component;
+        const { container, getByText } = component;
         expect(container).toBeInTheDocument();
-        expect(screen.getByText("Great reads these days"));
-        expect(screen.getByText("The Road to React"));
-        expect(screen.getByText("The Art Of Saying NO"));
-        expect(screen.getByText("The Magic of Thinking Big"));
-        expect(screen.getByText("Gifted Hands: The Ben Carson Story"));
-        expect(screen.getByText("Battlefield of the Mind"));
+        expect(getByText("Great reads these days"));
+        expect(getByText("The Road to React"));
+        expect(getByText("The Art Of Saying NO"));
+        expect(getByText("The Magic of Thinking Big"));
+        expect(getByText("Gifted Hands: The Ben Carson Story"));
+        expect(getByText("Battlefield of the Mind"));
     });
-    it("should delete single books", async () => {
-        const buttons = screen.getAllByRole("button");
-        expect(buttons.length).toBe(books.length);
-        await fireEvent.click(buttons[0]);
-        expect(mockDispatch).toHaveBeenCalled();
-        expect(mockDispatch).toHaveBeenCalledWith({
-            payload: "574dd20a-939b-11ee-b9d1-0242ac120002",
-            type: "updateBooks/removeBook",
+    it("should behave correctly when books are deleted", async () => {
+        let buttons: HTMLElement[] | null = screen.getAllByRole("button");
+
+        expect(buttons.length).toBe(INITIAL_BUTTON_LENGTH);
+
+        await act(async () => {
+            if (buttons !== null) {
+                await fireEvent.click(buttons[0]);
+            }
         });
 
-        await fireEvent.click(buttons[3]);
-        expect(mockDispatch).toHaveBeenCalledWith({
-            payload: "574dd8ea-939b-11ee-b9d1-0242ac120002",
-            type: "updateBooks/removeBook",
+        await waitFor(() => {
+            buttons = screen.getAllByRole("button");
+            expect(buttons.length).toBe(INITIAL_BUTTON_LENGTH - 1);
+            expect(
+                screen.queryByText("Great reads these days"),
+            ).toBeInTheDocument();
+            expect(
+                screen.queryByText("There are no books here"),
+            ).not.toBeInTheDocument();
+        });
+
+        for (let i = 0; i < buttons.length; i++) {
+            await act(async () => {
+                if (buttons !== null) {
+                    await fireEvent.click(buttons[i]);
+                }
+            });
+        }
+
+        await waitFor(() => {
+            buttons = screen.queryAllByRole("button");
+            expect(buttons.length).toBe(0);
+            expect(
+                screen.queryByText("Great reads these days"),
+            ).not.toBeInTheDocument();
+            expect(
+                screen.queryByText("There are no books here"),
+            ).toBeInTheDocument();
         });
     });
 });

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment, ReactElement } from "react";
 import { useDispatch } from "react-redux";
 import { bookActions } from "../../store/bookSlice";
 import { uiActions } from "../../store/uiSlice";
@@ -10,7 +10,7 @@ import NOTIFICATIONS from "../../local.json";
 //type imports
 import { BookData } from "@/types";
 
-const EditBookPage = () => {
+const EditBookPage = (): ReactElement => {
     const [bookData, setBookData] = useState<BookData>();
     const dispatch = useDispatch();
     const router = useRouter();
@@ -41,10 +41,10 @@ const EditBookPage = () => {
         resetNotification();
     };
     return (
-        <>
+        <Fragment>
             <PopupTemplate onAffirm={affirmHandler} onReject={rejectHandler} />
             <BookForm onAddBook={editBookHandler} buttonText='Edit Book' />
-        </>
+        </Fragment>
     );
 };
 
