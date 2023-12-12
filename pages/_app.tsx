@@ -4,7 +4,7 @@ import store from "../store";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps): React.ReactNode => {
     return (
         <Provider store={store}>
             <Layout>
@@ -12,6 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             </Layout>
         </Provider>
     );
-}
+};
 
 export default MyApp;

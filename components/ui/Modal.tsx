@@ -1,6 +1,12 @@
 import classes from "./Modal.module.css";
 import { createPortal } from "react-dom";
-import React, { Fragment, ReactNode, useEffect, useRef } from "react";
+import React, {
+    Fragment,
+    ReactNode,
+    useEffect,
+    useRef,
+    ReactElement,
+} from "react";
 
 type BackdropProps = {
     onClick?: () => void;
@@ -17,10 +23,10 @@ type ModalProps = {
     children: ReactNode;
 };
 
-const Backdrop = ({ onClick }: BackdropProps) => {
+const Backdrop = ({ onClick }: BackdropProps): ReactElement => {
     return <div className={classes.backdrop} onClick={onClick} />;
 };
-const ModalOverlay = ({ children }: OverlayProps) => {
+const ModalOverlay = ({ children }: OverlayProps): ReactElement => {
     return (
         <div className={classes.modal}>
             <div className={classes.content}>{children}</div>
@@ -33,7 +39,7 @@ const Modal = ({
     onClick,
     show,
     selector,
-}: ModalProps): React.ReactElement => {
+}: ModalProps): ReactElement => {
     const portalElement = useRef<Element | null>(null);
 
     useEffect((): (() => void) => {

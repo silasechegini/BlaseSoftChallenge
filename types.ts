@@ -9,6 +9,7 @@ export type BookData = {
 
 export type BookState = {
     books: BookData[];
+    isLoading?: boolean;
 };
 
 export type UIState = {

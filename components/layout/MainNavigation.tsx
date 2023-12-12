@@ -1,7 +1,7 @@
 import Link from "next/link";
 import classes from "./MainNavigation.module.css";
 
-function MainNavigation() {
+const MainNavigation = (): React.ReactElement => {
     return (
         <header className={classes.header}>
             <div className={classes.logo}>My Book Catalogue</div>
@@ -17,6 +17,6 @@ function MainNavigation() {
             </nav>
         </header>
     );
-}
+};
 
 export default MainNavigation;

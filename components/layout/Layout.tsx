@@ -4,7 +4,7 @@ import classes from "./Layout.module.css";
 type Props = {
     children: React.ReactNode;
 };
-function Layout(props: Props) {
+const Layout = (props: Props): React.ReactElement => {
     return (
         <div>
             <MainNavigation />
@@ -12,6 +12,6 @@ function Layout(props: Props) {
             <main className={classes.main}>{props.children}</main>
         </div>
     );
-}
+};
 
 export default Layout;

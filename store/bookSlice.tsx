@@ -3,7 +3,7 @@ import bookCatalogue from "./books.json";
 import { BookState } from "@/types";
 const { v4: generateId } = require("uuid");
 
-const initialState: BookState = { ...bookCatalogue };
+const initialState: BookState = { ...bookCatalogue, isLoading: false };
 
 const updateBooks = createSlice({
     name: "updateBooks",
